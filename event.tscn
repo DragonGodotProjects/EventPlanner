@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://74y5b06xq5vf"]
+
+[ext_resource type="Texture2D" uid="uid://ceefl02ipd10j" path="res://table.png" id="1_wi3ac"]
+[ext_resource type="PackedScene" uid="uid://bakjcq010xwva" path="res://attendee.tscn" id="3_civpy"]
+
+[node name="Event" type="Node2D" unique_id=218690963]
+
+[node name="Table" type="Sprite2D" parent="." unique_id=683971349]
+position = Vector2(45, 40)
+texture = ExtResource("1_wi3ac")
+
+[node name="Attendee" parent="." unique_id=2064436946 instance=ExtResource("3_civpy")]
+position = Vector2(34, 17)

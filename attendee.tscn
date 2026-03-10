@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bakjcq010xwva"]
+
+[ext_resource type="Texture2D" uid="uid://d3fwkar1xtfvg" path="res://attendee.png" id="1_ycbvr"]
+[ext_resource type="Script" uid="uid://buumto8om2c3a" path="res://attendee.gd" id="2_w0oac"]
+
+[node name="Attendee" type="Sprite2D" unique_id=2064436946]
+position = Vector2(10, 17)
+texture = ExtResource("1_ycbvr")
+script = ExtResource("2_w0oac")
