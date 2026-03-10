@@ -3,7 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://d3fwkar1xtfvg" path="res://attendee.png" id="1_ycbvr"]
 [ext_resource type="Script" uid="uid://buumto8om2c3a" path="res://attendee.gd" id="2_w0oac"]
 
-[node name="Attendee" type="Sprite2D" unique_id=2064436946]
-position = Vector2(10, 17)
-texture = ExtResource("1_ycbvr")
+[node name="Attendee" type="Node2D" unique_id=172756790]
 script = ExtResource("2_w0oac")
+
+[node name="Outfit" type="Sprite2D" parent="." unique_id=1131311675]
+position = Vector2(8, 16)
+texture = ExtResource("1_ycbvr")
+
+[node name="Color" type="Sprite2D" parent="." unique_id=1637016045]
+position = Vector2(8, 16)
+texture = ExtResource("1_ycbvr")

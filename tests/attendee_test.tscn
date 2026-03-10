@@ -7,5 +7,5 @@
 script = ExtResource("1_k1g7y")
 
 [node name="Attendee" parent="." unique_id=2064436946 instance=ExtResource("2_42lsv")]
-position = Vector2(35.5, 52.499996)
+position = Vector2(3.8146973e-06, -1)
 scale = Vector2(2.5625, 2.6562498)
