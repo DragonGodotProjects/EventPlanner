@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cw2b50f8ace04"]
-
-[ext_resource type="Script" uid="uid://c416x3u0fsoh8" path="res://tests/event_demo.gd" id="1_vb4p2"]
-[ext_resource type="PackedScene" uid="uid://74y5b06xq5vf" path="res://event.tscn" id="2_8qqfi"]
-
-[node name="EventTest" type="Node2D" unique_id=646812799]
-script = ExtResource("1_vb4p2")
-
-[node name="Event" parent="." unique_id=218690963 instance=ExtResource("2_8qqfi")]

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="EventPlanner"
-run/main_scene="uid://74y5b06xq5vf"
+run/main_scene="uid://cw2b50f8ace04"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
 
 [physics]
 
