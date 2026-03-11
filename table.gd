@@ -12,3 +12,7 @@ func seat_attendee(attendee):
 			return true
 	return false
 			
+func seated_count():
+	return len(seat_loc)-chairs.count(null)
+	
+	
