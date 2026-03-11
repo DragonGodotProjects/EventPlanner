@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpqmyh0ceh6re"]
 
-[ext_resource type="Script" uid="uid://b87jqs2ahlt5b" path="res://tests/waiting_queue_test.gd" id="1_aindo"]
+[ext_resource type="Script" uid="uid://b87jqs2ahlt5b" path="res://tests/waiting_queue_demo.gd" id="1_aindo"]
 [ext_resource type="PackedScene" uid="uid://dwwa48sccclx2" path="res://waiting_queue.tscn" id="2_yqkmp"]
 
 [node name="WaitingQueueTest" type="Node2D" unique_id=1259264389]
