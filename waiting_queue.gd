@@ -15,3 +15,5 @@ func dequeue():
 	# TODO: remove from front, move everyone up
 	pass
 	
+func get_attendee_count():
+	return len(attendees)

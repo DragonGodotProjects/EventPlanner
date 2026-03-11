@@ -29,3 +29,6 @@ func add_table():
 			return true
 	return false
 	
+func attendee_count():
+	return waiting_queue.get_attendee_count()
+	
