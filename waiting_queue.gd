@@ -11,4 +11,7 @@ func enqueue(attendee):
 	attendees.append(attendee)
 	current_end = Vector2i(current_end.x, current_end.y-20)
 	
+func dequeue():
+	# TODO: remove from front, move everyone up
+	pass
 	

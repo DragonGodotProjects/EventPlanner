@@ -1,26 +1,10 @@
 [gd_scene format=3 uid="uid://74y5b06xq5vf"]
 
 [ext_resource type="Script" uid="uid://ecaceynxftuw" path="res://event.gd" id="1_mri8j"]
-[ext_resource type="PackedScene" uid="uid://vredjdsoaiw0" path="res://Table.tscn" id="1_ruury"]
-[ext_resource type="PackedScene" uid="uid://vredjdsoaiw0" path="res://table.tscn" id="2_ruury"]
+[ext_resource type="PackedScene" uid="uid://dwwa48sccclx2" path="res://waiting_queue.tscn" id="2_ruury"]
 
 [node name="Event" type="Node2D" unique_id=218690963]
 y_sort_enabled = true
 script = ExtResource("1_mri8j")
 
-[node name="Table" parent="." unique_id=1589860428 instance=ExtResource("1_ruury")]
-position = Vector2(57, 63)
-
-[node name="Table2" parent="." unique_id=330933123 instance=ExtResource("1_ruury")]
-position = Vector2(57, 144)
-
-[node name="Table3" parent="." unique_id=57086992 instance=ExtResource("1_ruury")]
-position = Vector2(108, 105)
-
-[node name="Table4" parent="." unique_id=241577108 instance=ExtResource("1_ruury")]
-position = Vector2(163, 61)
-
-[node name="Table5" parent="." unique_id=1825165114 instance=ExtResource("2_ruury")]
-position = Vector2(157, 144)
-
-[node name="WaitingQueue" type="Node2D" parent="." unique_id=875743879]
+[node name="WaitingQueue" parent="." unique_id=1195808060 instance=ExtResource("2_ruury")]
