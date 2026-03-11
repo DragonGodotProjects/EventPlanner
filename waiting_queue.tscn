@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dwwa48sccclx2"]
+
+[ext_resource type="Script" uid="uid://3fwqhgvepx16" path="res://waiting_queue.gd" id="1_d0rn2"]
+
+[node name="WaitingQueue" type="Node2D" unique_id=1195808060]
+y_sort_enabled = true
+script = ExtResource("1_d0rn2")
