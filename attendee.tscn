@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://buumto8om2c3a" path="res://attendee.gd" id="2_w0oac"]
 
 [node name="Attendee" type="Node2D" unique_id=172756790]
+y_sort_enabled = true
 script = ExtResource("2_w0oac")
 
-[node name="Outfit" type="Sprite2D" parent="." unique_id=1131311675]
-position = Vector2(8, 16)
+[node name="Appearance" type="Sprite2D" parent="." unique_id=1131311675]
+position = Vector2(8, -12)
 texture = ExtResource("1_ycbvr")
 
 [node name="Color" type="Sprite2D" parent="." unique_id=1637016045]
-position = Vector2(8, 16)
+position = Vector2(8, -12)
 texture = ExtResource("1_ycbvr")

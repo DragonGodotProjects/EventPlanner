@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="EventPlanner"
+run/main_scene="uid://74y5b06xq5vf"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 

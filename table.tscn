@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://vredjdsoaiw0"]
+
+[ext_resource type="Texture2D" uid="uid://ceefl02ipd10j" path="res://table.png" id="1_2sdc1"]
+[ext_resource type="Script" uid="uid://xb21qxqd8sfw" path="res://table.gd" id="1_v5i0k"]
+
+[node name="Table" type="Node2D" unique_id=1589860428]
+y_sort_enabled = true
+script = ExtResource("1_v5i0k")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1041116065]
+y_sort_enabled = true
+position = Vector2(0, -13)
+texture = ExtResource("1_2sdc1")

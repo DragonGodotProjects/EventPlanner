@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://1gie6x8hfpqc"]
+
+[ext_resource type="Script" uid="uid://t4vlvnh6x0ry" path="res://tests/table_test.gd" id="1_8yabt"]
+[ext_resource type="PackedScene" uid="uid://vredjdsoaiw0" path="res://table.tscn" id="2_e5y0u"]
+
+[node name="TableTest" type="Node2D" unique_id=361195780]
+script = ExtResource("1_8yabt")
+
+[node name="Table" parent="." unique_id=1589860428 instance=ExtResource("2_e5y0u")]
+position = Vector2(79, 87)
