@@ -12,7 +12,6 @@ func test_only_waiting_queue():
 		event.add_attendee()
 		assert_eq(event.attendee_count(), i+1)
 	
-	
 
 func test_filling_several_tables_and_some_queue():
 	event.add_table()
