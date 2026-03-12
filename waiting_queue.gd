@@ -1,15 +1,17 @@
 class_name WaitingQueue extends Node2D
 
-var attendees = []
-const QUEUE_STARTING_POS = Vector2i(10,160)
-var current_end = QUEUE_STARTING_POS
+@export var start_pos:Vector2i = Vector2i(10,160)
+var end_pos:Vector2i = start_pos
+var attendees:Array[Attendee] = []
 
+func has_attendees() -> bool:
+	return not attendees.is_empty()
 
 func enqueue(attendee):
 	self.add_child(attendee)
-	attendee.position = current_end
+	attendee.position = end_pos
 	attendees.append(attendee)
-	current_end = Vector2i(current_end.x, current_end.y-20)
+	end_pos = Vector2i(end_pos.x, end_pos.y-20)
 	
 func dequeue():
 	# TODO: remove from front, move everyone up

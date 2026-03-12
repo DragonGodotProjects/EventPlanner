@@ -12,3 +12,11 @@ class_name Attendee extends Node2D
 				color_node.modulate = Color(1, 0, 0, -happiness/100.0)
 		else:
 			push_error("invalid value for happiness:"+str(new_value))
+
+func walk_to(new_pos:Vector2, callback):
+	# compute distance to find speed of movement
+	var distance:float = self.position.distance_to(new_pos)
+	var tween = get_tree().create_tween()
+	# move 150 pixels per second
+	tween.tween_property(self, "position", new_pos, distance/150)
+	tween.tween_callback(callback)

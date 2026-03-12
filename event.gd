@@ -26,6 +26,10 @@ func add_table() -> bool :
 			return true
 	return false
 	
+func try_to_seat_queue():
+	# TODO
+	pass 
+	
 func seat_attendee(attendee:Attendee) -> bool:
 	for table in tables:
 		if table != null and table.seat_attendee(attendee):
