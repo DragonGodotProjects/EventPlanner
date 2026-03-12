@@ -1,6 +1,6 @@
 extends GutTest
 
-var event
+var event:Event
 
 func before_each():
 	event = preload("res://event.tscn").instantiate()
