@@ -1,4 +1,4 @@
-extends Node2D
+class_name WaitingQueue extends Node2D
 
 var attendees = []
 const QUEUE_STARTING_POS = Vector2i(10,160)
