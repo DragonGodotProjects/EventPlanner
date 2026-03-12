@@ -11,12 +11,12 @@ var tables:Array[Table] = [null, null, null, null, null] # holds tables if they'
 
 func add_attendee():
 	var new_attendee = attendee_scene.instantiate()
-	var seated = false
 	for table in tables:
-		if table and table.seat_attendee(new_attendee):
-			seated = true
-	if not seated:
-		waiting_queue.enqueue(new_attendee)
+		if table != null and table.seat_attendee(new_attendee):
+			# if table.seatAttendee() returned true, they got a seat
+			return
+	# if we make it here, there are no seats
+	waiting_queue.enqueue(new_attendee)
 	
 func add_table():
 	var table = table_scene.instantiate()
@@ -29,6 +29,13 @@ func add_table():
 			return true
 	return false
 	
-func attendee_count():
+func attendee_waiting_count():
 	return waiting_queue.get_attendee_count()
+	
+func attendee_count():
+	var total = attendee_waiting_count()
+	for table in tables:
+		if table != null:
+			total += table.seated_count()
+	return total
 	

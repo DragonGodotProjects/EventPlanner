@@ -14,9 +14,16 @@ func test_only_waiting_queue():
 	
 	
 
-func test_adding_to_tables():
+func test_filling_several_tables_and_some_queue():
 	event.add_table()
 	event.add_attendee()
 	event.add_table()
 	event.add_attendee()
+	assert_eq(event.attendee_count(), 2)
+	assert_eq(event.attendee_waiting_count(), 0)
+	for i in range(10):
+		event.add_attendee()
+	assert_eq(event.attendee_count(), 12)
+	assert_eq(event.attendee_waiting_count(), 4)
+
 	
