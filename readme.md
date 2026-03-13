@@ -1,4 +1,4 @@
-*Learning Objectives*
+# Learning Objectives
 
   - OOP
 	- heirarchies of objects
