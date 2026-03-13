@@ -2,7 +2,7 @@
 
   - OOP
 	- heirarchies of objects
-	  - events hold tables, tables hold attendees
+	  - events hold tables and waiitng queues, tables and witing queues hold attendees
 	- ownership of objects (fror creating/destroying)
 	  - events own tables and attendees, tables hold but don't own attendees
     - relative coordinate systems
