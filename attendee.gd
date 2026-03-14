@@ -1,7 +1,13 @@
 class_name Attendee extends Node2D
 
+static var NEXT_ID=1
+
 @onready var color_node:Sprite2D = $Color
 @onready var label:Label = $Label
+
+func _ready() -> void:
+	id = NEXT_ID
+	NEXT_ID += 1
 
 @export var id:int = 1:
 	set(new_value):

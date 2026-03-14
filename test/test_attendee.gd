@@ -4,6 +4,7 @@ var attendee:Attendee
 signal walk_ended
 
 func before_each():
+	Attendee.NEXT_ID = 1 #Reset class state before each test
 	attendee = preload("res://attendee.tscn").instantiate()
 	add_child_autofree(attendee) # gut should add and remove from scene tree
 
@@ -11,6 +12,16 @@ func test_set_id():
 	attendee.id=23
 	assert_eq(attendee.id, 23)
 	assert_eq(attendee.label.text, "23")
+	
+func test_auto_id():
+	assert_eq(attendee.id, 1)
+	for i in range(2,6):
+		attendee = preload("res://attendee.tscn").instantiate()
+		add_child_autofree(attendee)
+		assert_eq(attendee.id, i)
+		assert_eq(attendee.label.text, str(i))
+	assert_eq(Attendee.NEXT_ID, 6)
+
 	
 
 func test_walk_to():
