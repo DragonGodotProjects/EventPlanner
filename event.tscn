@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://74y5b06xq5vf"]
 
-[ext_resource type="Script" path="res://event.gd" id="1_mri8j"]
+[ext_resource type="Script" uid="uid://ecaceynxftuw" path="res://event.gd" id="1_mri8j"]
 [ext_resource type="PackedScene" uid="uid://dwwa48sccclx2" path="res://waiting_queue.tscn" id="2_ruury"]
 
 [node name="Event" type="Node2D" unique_id=218690963]

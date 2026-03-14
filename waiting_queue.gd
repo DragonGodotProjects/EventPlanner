@@ -1,8 +1,9 @@
 class_name WaitingQueue extends Node2D
 
-@export var start_pos:Vector2i = Vector2i(10,160)
-var end_pos:Vector2i = start_pos
 var attendees:Array[Attendee] = []
+@onready var front_node:Node2D = $Front
+@onready var start_pos:Vector2i = front_node.position
+@onready var end_pos:Vector2i = start_pos
 
 func has_attendees() -> bool:
 	return not attendees.is_empty()

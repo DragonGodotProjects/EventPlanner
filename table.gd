@@ -1,6 +1,6 @@
 class_name Table extends Node2D
 
-const seat_loc:Array[Vector2i] = [Vector2i(-20, -20), Vector2i(0, -20), Vector2i(-20, 10), Vector2i(0, 10)]
+const seat_loc:Array[Vector2i] = [Vector2i(-16, -20), Vector2i(8, -20), Vector2i(-16, 10), Vector2i(8, 10)]
 var chairs:Array[Attendee] = [null, null, null, null] # holds attendees if they are sitting in this chair
 
 func seat_attendee(attendee:Attendee) -> bool:

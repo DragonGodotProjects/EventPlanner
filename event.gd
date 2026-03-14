@@ -1,7 +1,7 @@
 class_name Event extends Node2D
 
 
-const table_locs:Array[Vector2i] = [Vector2i(57, 63), Vector2i(57, 144), Vector2i(108, 105), Vector2i(163, 61), Vector2i(157, 144)]
+const table_locs:Array[Vector2i] = [Vector2i(70, 63), Vector2i(80, 144), Vector2i(120, 105), Vector2i(185, 61), Vector2i(173, 144)]
 var tables:Array[Table] = [null, null, null, null, null] # holds tables if they're in this position
 
 @onready var attendee_scene:PackedScene = preload("attendee.tscn")

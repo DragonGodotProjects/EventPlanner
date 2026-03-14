@@ -8,3 +8,8 @@ y_sort_enabled = true
 script = ExtResource("1_aindo")
 
 [node name="WaitingQueue" parent="." unique_id=1195808060 instance=ExtResource("2_yqkmp")]
+
+[node name="Entrance" type="Node2D" parent="." unique_id=1688888960]
+
+[node name="Front" type="Node2D" parent="." unique_id=1100768651]
+position = Vector2(19, 170)
