@@ -7,6 +7,11 @@ func before_each():
 	attendee = preload("res://attendee.tscn").instantiate()
 	add_child_autofree(attendee) # gut should add and remove from scene tree
 
+func test_set_id():
+	attendee.id=23
+	assert_eq(attendee.id, 23)
+	assert_eq(attendee.label.text, "23")
+	
 
 func test_walk_to():
 	attendee.walk_to(Vector2i(150, 150), func check_walk(): walk_ended.emit())

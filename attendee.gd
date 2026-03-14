@@ -1,6 +1,12 @@
 class_name Attendee extends Node2D
 
 @onready var color_node:Sprite2D = $Color
+@onready var label:Label = $Label
+
+@export var id:int = 1:
+	set(new_value):
+		id = new_value
+		label.text = str(new_value)
 
 @export var happiness:int = 0:
 	set(new_value):
