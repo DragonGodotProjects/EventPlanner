@@ -1,8 +1,19 @@
 extends GutTest
 
-func test_set_happiness():
-	var attendee:Attendee = preload("res://attendee.tscn").instantiate()
+var attendee:Attendee
+signal walk_ended
+
+func before_each():
+	attendee = preload("res://attendee.tscn").instantiate()
 	add_child_autofree(attendee) # gut should add and remove from scene tree
+
+
+func test_walk_to():
+	attendee.walk_to(Vector2i(150, 150), func check_walk(): walk_ended.emit())
+	await wait_for_signal(walk_ended, 3)
+	assert_eq(attendee.position, Vector2(150, 150))
+
+func test_set_happiness():
 	attendee.happiness = 50
 	assert_eq(attendee.happiness, 50)
 	# check that the color setting worked
