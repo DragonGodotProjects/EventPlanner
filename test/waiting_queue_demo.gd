@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var rng = RandomNumberGenerator.new()
 @onready var attendee_scene:PackedScene = preload("../attendee.tscn")
 @onready var waiting_queue:WaitingQueue = $WaitingQueue
 
@@ -15,3 +15,4 @@ func _input(event:InputEvent):
 func on_finish_dequeue(attendee:Attendee):
 	add_child(attendee)
 	attendee.happiness = 50
+	attendee.walk_to(Vector2i(rng.randi_range(50, 400), rng.randi_range(50, 400)))

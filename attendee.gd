@@ -25,10 +25,11 @@ func _ready() -> void:
 		else:
 			push_error("invalid value for happiness:"+str(new_value))
 
-func walk_to(new_pos:Vector2, callback):
+func walk_to(new_pos:Vector2, callback=null):
 	# compute distance to find speed of movement
 	var distance:float = self.position.distance_to(new_pos)
 	var tween = get_tree().create_tween()
 	# move 150 pixels per second
 	tween.tween_property(self, "position", new_pos, distance/150)
-	tween.tween_callback(callback)
+	if callback:
+		tween.tween_callback(callback)

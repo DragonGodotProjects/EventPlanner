@@ -20,15 +20,19 @@ func enqueue(attendee):
 	end_pos = Vector2i(end_pos.x, end_pos.y-LINE_SPACING)
 	
 	
-func start_dequeue():
-	var attendee_out:Attendee = attendees.pop_front()
-	# closure to bring attendee_out with function
-	var end_dequeue = func(): 
-		remove_child(attendee_out)
-		dequeued.emit(attendee_out)
-		move_everyone_from_index(0)
-	move_up_one(attendee_out, end_dequeue)
-	return attendee_out
+func start_dequeue() -> bool:
+	if len(attendees) > 0:
+		var attendee_out:Attendee = attendees.pop_front()
+		# closure to bring attendee_out with function
+		var end_dequeue = func(): 
+			remove_child(attendee_out)
+			dequeued.emit(attendee_out)
+			move_everyone_from_index(0)
+		move_up_one(attendee_out, end_dequeue)
+		return true
+	else:
+		return false
+	
 	
 func move_everyone_from_index(currIdx):
 	if (currIdx < len(attendees)):
