@@ -6,6 +6,7 @@ func test_enqueue_dequeue():
 	var q:WaitingQueue = preload("res://waiting_queue.tscn").instantiate()
 	add_child_autofree(q) # gut should add and remove
 	
+	# put some attendees in the queue
 	for i in range(4):
 		assert_eq(q.get_attendee_count(), i)
 		var next_attendee:Attendee = attendee_scene.instantiate()
@@ -13,12 +14,23 @@ func test_enqueue_dequeue():
 		q.enqueue(next_attendee)
 		assert_eq(q.get_attendee_count(), i+1)
 	
+	# take someone out
 	q.start_dequeue()
+	# wait for them to move out of queue
 	assert_true (await wait_for_signal(q.dequeued, 3)) # wait for signal calls watch_signal, which allows get_signal_parameters to work
 	var first_out:Attendee = get_signal_parameters(q.dequeued)[0]
 	assert_eq(first_out.id, 1)
 	assert_eq(first_out.get_parent(), null)
 	assert_eq(first_out.position, Vector2(q.start_pos.x, q.start_pos.y + q.LINE_SPACING))
+	assert_eq(q.get_attendee_count(), 3)
+	
+	# wait for eveyone in line to move up
+	assert_true (await wait_for_signal(q.queue_moved, 3))
+	assert_eq(q.attendees[0].id, 2)
+	assert_eq(q.attendees[0].position, q.front_node.position)
+	assert_eq(q.attendees[-1].id, 4)
+	assert_eq(q.attendees[-1].position, Vector2(q.end_pos.x, q.end_pos.y + q.LINE_SPACING))
+
 	
 	
 	

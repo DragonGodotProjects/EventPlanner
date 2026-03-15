@@ -1,6 +1,7 @@
 class_name WaitingQueue extends Node2D
 
 signal dequeued(attendee:Attendee)
+signal queue_moved
 
 const LINE_SPACING:int = 20
 
@@ -25,8 +26,16 @@ func start_dequeue():
 	var end_dequeue = func(): 
 		remove_child(attendee_out)
 		dequeued.emit(attendee_out)
+		move_everyone_from_index(0)
 	move_up_one(attendee_out, end_dequeue)
 	return attendee_out
+	
+func move_everyone_from_index(currIdx):
+	if (currIdx < len(attendees)):
+		move_up_one(attendees[currIdx], func next(): move_everyone_from_index(currIdx+1))
+	else:
+		end_pos = Vector2i(end_pos.x, end_pos.y+LINE_SPACING)
+		queue_moved.emit()
 	
 func get_attendee_count():
 	return len(attendees)
