@@ -1,5 +1,9 @@
 class_name WaitingQueue extends Node2D
 
+signal dequeued(attendee:Attendee)
+
+const LINE_SPACING:int = 20
+
 var attendees:Array[Attendee] = []
 @onready var front_node:Node2D = $Front
 @onready var start_pos:Vector2i = front_node.position
@@ -12,11 +16,20 @@ func enqueue(attendee):
 	self.add_child(attendee)
 	attendee.position = end_pos
 	attendees.append(attendee)
-	end_pos = Vector2i(end_pos.x, end_pos.y-20)
+	end_pos = Vector2i(end_pos.x, end_pos.y-LINE_SPACING)
 	
-func dequeue():
-	# TODO: remove from front, move everyone up
-	pass
+	
+func start_dequeue():
+	var attendee_out:Attendee = attendees.pop_front()
+	# closure to bring attendee_out with function
+	var end_dequeue = func(): 
+		remove_child(attendee_out)
+		dequeued.emit(attendee_out)
+	move_up_one(attendee_out, end_dequeue)
+	return attendee_out
 	
 func get_attendee_count():
 	return len(attendees)
+
+static func move_up_one(attendee:Attendee, callback:Callable):
+	attendee.walk_to(Vector2(attendee.position.x, attendee.position.y+LINE_SPACING), callback)
