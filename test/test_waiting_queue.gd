@@ -14,7 +14,7 @@ func test_enqueue_dequeue():
 		assert_eq(q.get_attendee_count(), i+1)
 	
 	q.start_dequeue()
-	var worked:bool = await wait_for_signal(q.dequeued, 3) # wait fir signal calls watch_signal, which allows get_signal_parameters to work
+	assert_true (await wait_for_signal(q.dequeued, 3)) # wait for signal calls watch_signal, which allows get_signal_parameters to work
 	var first_out:Attendee = get_signal_parameters(q.dequeued)[0]
 	assert_eq(first_out.id, 1)
 	assert_eq(first_out.get_parent(), null)
