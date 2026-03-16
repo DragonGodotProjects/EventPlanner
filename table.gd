@@ -5,10 +5,13 @@ var chairs:Array[Attendee] = [null, null, null, null] # holds attendees if they 
 
 func seat_attendee(attendee:Attendee, seat_num:int) -> void:
 	if chairs[seat_num] == null:
+		# fix so that when the attendee becomes a child of this node, they don't immediately move their position
 		var attendee_global_pos = attendee.global_position
 		self.add_child(attendee)
 		attendee.global_position = attendee_global_pos
+		
 		chairs[seat_num] = attendee
+		# now they should move from whereever they were to their seat in this relative position
 		attendee.walk_to(seat_loc[seat_num])
 	else:
 		push_error("seat not available: seat num " + str(seat_num))
