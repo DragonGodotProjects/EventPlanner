@@ -8,12 +8,12 @@ var tables:Array[Table] = [null, null, null, null, null] # holds tables if they'
 @onready var table_scene:PackedScene = preload("table.tscn")
 @onready var waiting_queue:WaitingQueue = $WaitingQueue
 
+func _ready():
+	waiting_queue.dequeued.connect(on_attendee_seated)
 
 func add_attendee() -> void :
 	var new_attendee:Attendee = attendee_scene.instantiate()
-	var seated:bool = seat_attendee(new_attendee)
-	if not seated:
-		waiting_queue.enqueue(new_attendee)
+	waiting_queue.enqueue(new_attendee)
 	
 func add_table() -> bool :
 	var table:Table = table_scene.instantiate()
@@ -26,9 +26,16 @@ func add_table() -> bool :
 			return true
 	return false
 	
-func try_to_seat_queue():
-	# TODO
-	pass 
+func try_to_seat_from_queue():
+	# TODO: take a person and seat them
+	# waiting_queue.start_dequeue()
+	push_error("not implemented yet")
+	
+func on_attendee_seated(attendee:Attendee) -> void:
+	# Once someone has a seat, seat the next person
+	push_error("not implemented yet")
+	
+	
 	
 func seat_attendee(attendee:Attendee) -> bool:
 	for table in tables:
