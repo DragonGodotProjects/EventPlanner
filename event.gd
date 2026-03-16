@@ -9,9 +9,9 @@ var tables:Array[Table] = [null, null, null, null, null] # holds tables if they'
 @onready var waiting_queue:WaitingQueue = $WaitingQueue
 
 func _ready():
-	waiting_queue.dequeued.connect(on_attendee_seated)
+	waiting_queue.dequeued.connect(_on_attendee_ready_to_sit)
 
-func add_attendee() -> void :
+func attendee_arrived() -> void :
 	var new_attendee:Attendee = attendee_scene.instantiate()
 	waiting_queue.enqueue(new_attendee)
 	
@@ -22,28 +22,31 @@ func add_table() -> bool :
 			self.add_child(table)
 			tables[idx] = table
 			table.position = table_locs[idx]
-			# TODO: need to walkt through queue and seat people
 			return true
 	return false
 	
-func try_to_seat_from_queue():
-	# TODO: take a person and seat them
-	# waiting_queue.start_dequeue()
-	push_error("not implemented yet")
+func _on_attendee_ready_to_sit(attendee:Attendee) -> void:
+	var table_and_seat_num = _find_open_seat()
+	if table_and_seat_num[0] != -1:
+		tables[table_and_seat_num[0]].seat_attendee(attendee, table_and_seat_num[1])
+	else:
+		push_error("Can't seat with no available seat")
+
+func _find_open_seat() -> Array[int]:
+	for idx in range(len(tables)):
+		if tables[idx] != null:
+			var seat_num:int = tables[idx].find_open_seat()
+			if seat_num != -1:
+				return [idx, seat_num]
+	return [-1, -1]
 	
-func on_attendee_seated(attendee:Attendee) -> void:
-	# Once someone has a seat, seat the next person
-	push_error("not implemented yet")
+func try_to_seat_from_queue() -> bool:
+	if waiting_queue.has_attendees() and _find_open_seat()[0] != -1:
+		waiting_queue.start_dequeue()
+		return true
+	else:
+		return false
 	
-	
-	
-func seat_attendee(attendee:Attendee) -> bool:
-	for table in tables:
-		if table != null and table.seat_attendee(attendee):
-			# if table.seatAttendee() returned true, they got a seat
-			return true
-	# if we make it here, there are no seats
-	return false
 	
 func attendee_waiting_count() -> int:
 	return waiting_queue.get_attendee_count()
