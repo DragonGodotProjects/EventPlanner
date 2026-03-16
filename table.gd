@@ -5,7 +5,9 @@ var chairs:Array[Attendee] = [null, null, null, null] # holds attendees if they 
 
 func seat_attendee(attendee:Attendee, seat_num:int) -> void:
 	if chairs[seat_num] == null:
+		var attendee_global_pos = attendee.global_position
 		self.add_child(attendee)
+		attendee.global_position = attendee_global_pos
 		chairs[seat_num] = attendee
 		attendee.walk_to(seat_loc[seat_num])
 	else:

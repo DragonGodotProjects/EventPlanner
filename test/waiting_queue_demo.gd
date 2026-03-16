@@ -7,7 +7,6 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	waiting_queue.dequeued.connect(on_finish_dequeue)
 
-
 func _input(event:InputEvent):
 	if event.is_action_pressed("ui_up"):
 		var new_attendee:Attendee = attendee_scene.instantiate()
