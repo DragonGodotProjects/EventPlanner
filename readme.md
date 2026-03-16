@@ -23,4 +23,7 @@
 	- how to do both/either and interchange to improve workflow
 	  - create objects through drag-n-drop, find positioning
 	  - write code that then does this automatically
+  - static
+	- static functions: functions that don't need access to self (e.g., Table._move_up_one) 
+	- static (class level) data (e.g., Attendee.NEXT_ID)
 	
