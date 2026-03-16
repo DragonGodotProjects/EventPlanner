@@ -26,7 +26,7 @@ func test_auto_id():
 
 func test_walk_to():
 	attendee.walk_to(Vector2i(150, 150), func check_walk(): walk_ended.emit())
-	await wait_for_signal(walk_ended, 3)
+	assert_true(await wait_for_signal(walk_ended, 3))
 	assert_eq(attendee.position, Vector2(150, 150))
 
 func test_set_happiness():
