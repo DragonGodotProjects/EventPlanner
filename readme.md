@@ -13,6 +13,10 @@
 	- automated testing: GUT
 	  - creating game objects to test outside of the game
 	  - timing issues, how to trigger events, how to recognize when events occur
+  - Event-driven/functional programming
+	- callbacks for when animation is finished (e.g., Attendee.walk_to)
+	- signals to alert for events (e.g., WaitingQueue.dequeued)
+	- closures to share state (e.g., local lambda function in WaitingQueue.start_dequeue)
   - Interplay between engine-GUI and code
 	- which tasks to do in engine-GUI: item placement, etc.
 	- which tasks to do in code and how: dynamic creation/desctruction etc.
