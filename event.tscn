@@ -1,10 +1,24 @@
 [gd_scene format=3 uid="uid://74y5b06xq5vf"]
 
 [ext_resource type="Script" uid="uid://ecaceynxftuw" path="res://event.gd" id="1_mri8j"]
+[ext_resource type="Texture2D" uid="uid://cyl68gr66dhjq" path="res://Tile.png" id="2_mri8j"]
 [ext_resource type="PackedScene" uid="uid://dwwa48sccclx2" path="res://waiting_queue.tscn" id="2_ruury"]
 
 [node name="Event" type="Node2D" unique_id=218690963]
 y_sort_enabled = true
 script = ExtResource("1_mri8j")
 
+[node name="Floor" type="TextureRect" parent="." unique_id=739726478]
+z_index = -10
+offset_right = 1151.0
+offset_bottom = 648.0
+texture = ExtResource("2_mri8j")
+stretch_mode = 1
+
 [node name="WaitingQueue" parent="." unique_id=1195808060 instance=ExtResource("2_ruury")]
+
+[node name="Entance" type="Node2D" parent="." unique_id=1749329773]
+position = Vector2(78, 2)
+
+[node name="Exit" type="Node2D" parent="." unique_id=1531575072]
+position = Vector2(1, 214)

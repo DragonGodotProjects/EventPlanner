@@ -13,7 +13,8 @@ func _ready():
 
 func attendee_arrived() -> void :
 	var new_attendee:Attendee = attendee_scene.instantiate()
-	waiting_queue.enqueue(new_attendee)
+	new_attendee.position = waiting_queue.entrance_node.position
+	waiting_queue.start_enqueue(new_attendee)
 	
 func add_table() -> bool :
 	var table:Table = table_scene.instantiate()

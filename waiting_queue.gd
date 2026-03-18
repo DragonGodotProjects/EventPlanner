@@ -1,11 +1,13 @@
 class_name WaitingQueue extends Node2D
 
 signal dequeued(attendee:Attendee)
+signal enqueued(attendee:Attendee)
 signal queue_moved
 
 const LINE_SPACING:int = 20
 
 var attendees:Array[Attendee] = []
+@onready var entrance_node:Node2D = $Entrance
 @onready var front_node:Node2D = $Front
 @onready var start_pos:Vector2i = front_node.position
 @onready var end_pos:Vector2i = start_pos
@@ -13,11 +15,15 @@ var attendees:Array[Attendee] = []
 func has_attendees() -> bool:
 	return not attendees.is_empty()
 
-func enqueue(attendee):
+func start_enqueue(attendee:Attendee) -> void:
 	self.add_child(attendee)
-	attendee.position = end_pos
 	attendees.append(attendee)
+	var curr_pos:Vector2i = end_pos
 	end_pos = Vector2i(end_pos.x, end_pos.y-LINE_SPACING)
+	var end_enqueue:Callable = func(): 
+			enqueued.emit(attendee)
+	attendee.walk_to(curr_pos, end_enqueue)
+	
 	
 	
 func start_dequeue() -> bool:

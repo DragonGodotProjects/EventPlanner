@@ -13,6 +13,9 @@ func test_filling_several_tables_and_some_queue():
 	event.add_table()
 	event.add_table()
 	helper_add_attendees_to_q_and_check(10)
+	for i in range(10): # TODO: If I mke this 8, the test passes, which is wrong
+		assert_true(await wait_for_signal(event.waiting_queue.enqueued, 3))
+
 	assert_eq(event.attendee_count(), 10)
 	assert_eq(event.attendee_waiting_count(), 10)
 	# room for 8 people currently
