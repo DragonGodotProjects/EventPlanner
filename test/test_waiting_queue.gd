@@ -64,7 +64,7 @@ func test_dequeue_while_moving():
 	assert_true(q.start_dequeue())
 	assert_true(q.start_dequeue())
 	assert_true (await wait_for_signal(q.queue_moved, 3))
-	assert_true (await wait_for_signal(q.queue_moved, 3))
+	assert_eq (await get_signal_emit_count(q.queue_moved), 2)
 	# people should be in proper position
 	assert_eq(q.attendees[0].id, 3)
 	assert_eq(q.attendees[0].position, q.front_node.position)

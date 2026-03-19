@@ -42,6 +42,7 @@ func start_dequeue() -> bool:
 	
 func _move_everyone_from_index(currIdx):
 	if (currIdx < len(attendees)):
+		print("moving up " + str(currIdx))
 		_move_up_one(attendees[currIdx], func next(): _move_everyone_from_index(currIdx+1))
 	else:
 		end_pos = Vector2i(end_pos.x, end_pos.y+LINE_SPACING)
