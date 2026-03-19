@@ -60,17 +60,21 @@ func test_both_enqueue_and_dequeue():
 func test_dequeue_while_moving():
 	# many people in line
 	helper_add_and_check_attendees(8)
+	for i in 8:
+		assert_true (await wait_for_signal(q.enqueued, 3))
+	assert_eq (await get_signal_emit_count(q.enqueued), 8)
+
 	# dequeue multiple quickly so one is dequeued while the queue is still updating
 	assert_true(q.start_dequeue())
-	#assert_true(q.start_dequeue())
+	assert_true(q.start_dequeue())
 	assert_true (await wait_for_signal(q.queue_moved, 3))
-	#assert_eq (await get_signal_emit_count(q.queue_moved), 2)
+	assert_eq (await get_signal_emit_count(q.queue_moved), 2)
 	## people should be in proper position
-	#assert_eq(q.attendees[0].id, 3)
-	#assert_eq(q.attendees[0].position, q.front_node.position)
-	#assert_eq(q.attendees[-1].id, 8)
-	#assert_eq(q.attendees[-1].position, Vector2(q.front_node.position.x, q.front_node.position.y - (5*q.LINE_SPACING))) 
-	#assert_eq(q.attendees[-1].position, Vector2(q.end_pos.x, q.end_pos.y + q.LINE_SPACING))
+	assert_eq(q.attendees[0].id, 3)
+	assert_eq(q.attendees[0].position, q.front_node.position)
+	assert_eq(q.attendees[-1].id, 8)
+	assert_eq(q.attendees[-1].position, Vector2(q.front_node.position.x, q.front_node.position.y - (5*q.LINE_SPACING))) 
+	assert_eq(q.attendees[-1].position, Vector2(q.end_pos.x, q.end_pos.y + q.LINE_SPACING))
 
 
 func helper_add_and_check_attendees(num_to_add):
@@ -81,6 +85,5 @@ func helper_add_and_check_attendees(num_to_add):
 		next_attendee.position = q.entrance_node.position
 		autofree(next_attendee) # table will add but not remove attendee, since the test made it
 		q.start_enqueue(next_attendee)
-		assert_eq(q.get_attendee_count(), i+1)
-	
+		assert_eq(q.get_attendee_count(), i+1)	
 	

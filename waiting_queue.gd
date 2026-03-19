@@ -21,7 +21,6 @@ func start_enqueue(attendee:Attendee) -> void:
 	var curr_pos:Vector2i = end_pos
 	end_pos = Vector2i(end_pos.x, end_pos.y-LINE_SPACING)
 	var end_enqueue:Callable = func():
-		print(self) 
 		enqueued.emit(attendee)
 	attendee.walk_to(curr_pos, end_enqueue)
 	
@@ -31,9 +30,8 @@ func start_dequeue() -> bool:
 	if len(attendees) > 0:
 		var attendee_out:Attendee = attendees.pop_front()
 		# closure to bring attendee_out with function
-		print("dequeue")
 		var end_dequeue = func():
-			print("dequeue done")
+			#print("dequeue done")
 			remove_child(attendee_out)
 			dequeued.emit(attendee_out)
 			_move_everyone_up_from_index(0, start_pos)
@@ -45,11 +43,10 @@ func start_dequeue() -> bool:
 	
 func _move_everyone_up_from_index(currIdx:int, next_pos:Vector2i):
 	if (currIdx < len(attendees)):
-		print("moving up " + str(currIdx)+ " " + str(len(attendees)))
+		#print("moving " + str(currIdx)+ " out of " + str(len(attendees)) + " to " + str(next_pos))
 		var next = func(): _move_everyone_up_from_index(currIdx+1, next_pos - Vector2i(0, LINE_SPACING))
 		attendees[currIdx].walk_to(next_pos, next)
 	else:
-		print("done moving")
 		end_pos = Vector2i(end_pos.x, end_pos.y+LINE_SPACING)
 		queue_moved.emit()
 	
