@@ -20,8 +20,9 @@ func start_enqueue(attendee:Attendee) -> void:
 	attendees.append(attendee)
 	var curr_pos:Vector2i = end_pos
 	end_pos = Vector2i(end_pos.x, end_pos.y-LINE_SPACING)
-	var end_enqueue:Callable = func(): 
-			enqueued.emit(attendee)
+	var end_enqueue:Callable = func():
+		print(self) 
+		enqueued.emit(attendee)
 	attendee.walk_to(curr_pos, end_enqueue)
 	
 	
@@ -30,26 +31,27 @@ func start_dequeue() -> bool:
 	if len(attendees) > 0:
 		var attendee_out:Attendee = attendees.pop_front()
 		# closure to bring attendee_out with function
-		var end_dequeue = func(): 
+		print("dequeue")
+		var end_dequeue = func():
+			print("dequeue done")
 			remove_child(attendee_out)
 			dequeued.emit(attendee_out)
-			_move_everyone_from_index(0)
-		_move_up_one(attendee_out, end_dequeue)
+			_move_everyone_up_from_index(0, start_pos)
+		attendee_out.walk_to(Vector2(attendee_out.position.x, attendee_out.position.y+LINE_SPACING), end_dequeue)
 		return true
 	else:
 		return false
 	
 	
-func _move_everyone_from_index(currIdx):
+func _move_everyone_up_from_index(currIdx:int, next_pos:Vector2i):
 	if (currIdx < len(attendees)):
-		print("moving up " + str(currIdx))
-		_move_up_one(attendees[currIdx], func next(): _move_everyone_from_index(currIdx+1))
+		print("moving up " + str(currIdx)+ " " + str(len(attendees)))
+		var next = func(): _move_everyone_up_from_index(currIdx+1, next_pos - Vector2i(0, LINE_SPACING))
+		attendees[currIdx].walk_to(next_pos, next)
 	else:
+		print("done moving")
 		end_pos = Vector2i(end_pos.x, end_pos.y+LINE_SPACING)
 		queue_moved.emit()
 	
 func get_attendee_count():
 	return len(attendees)
-
-static func _move_up_one(attendee:Attendee, callback:Callable):
-	attendee.walk_to(Vector2(attendee.position.x, attendee.position.y+LINE_SPACING), callback)
