@@ -27,7 +27,7 @@ func add_table() -> bool :
 	return false
 	
 func _on_attendee_ready_to_sit(attendee:Attendee) -> void:
-	var table_and_seat_num = _find_open_seat()
+	var table_and_seat_num:Array[int] = _find_open_seat()
 	if table_and_seat_num[0] != -1:
 		tables[table_and_seat_num[0]].seat_attendee(attendee, table_and_seat_num[1])
 	else:
