@@ -7,6 +7,8 @@ signal queue_moved
 const LINE_SPACING:int = 20
 
 var attendees:Array[Attendee] = []
+# no linked-node-style lists available in godot, see here for detail:
+# https://www.youtube.com/watch?v=xpCfs4rvoJQ
 @onready var entrance_node:Node2D = $Entrance
 @onready var front_node:Node2D = $Front
 @onready var start_pos:Vector2i = front_node.position
