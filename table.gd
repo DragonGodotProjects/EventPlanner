@@ -25,4 +25,18 @@ func find_open_seat() -> int:
 func seated_count() -> int:
 	return len(seat_loc)-chairs.count(null)
 	
+func attendee_leaving(attendee:Attendee) -> bool:
+	var loc:int = chairs.find(attendee)
+	if loc != -1:
+		chairs[loc] = null
+		return true
+	else:
+		return false
+		
+func find_all_attendees_seated() -> Array[Attendee] :
+	var attendees:Array[Attendee] = []
+	for attendee in chairs:
+		if attendee != null:
+			attendees.append(attendee)
+	return attendees
 	

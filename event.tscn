@@ -18,7 +18,7 @@ stretch_mode = 1
 [node name="WaitingQueue" parent="." unique_id=1195808060 instance=ExtResource("2_ruury")]
 
 [node name="Entance" type="Node2D" parent="." unique_id=1749329773]
-position = Vector2(78, 2)
+position = Vector2(72, -16)
 
 [node name="Exit" type="Node2D" parent="." unique_id=1531575072]
-position = Vector2(1, 214)
+position = Vector2(-23, 227)

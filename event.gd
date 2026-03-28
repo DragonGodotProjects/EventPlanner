@@ -7,12 +7,14 @@ var tables:Array[Table] = [null, null, null, null, null] # holds tables if they'
 @onready var attendee_scene:PackedScene = preload("attendee.tscn")
 @onready var table_scene:PackedScene = preload("table.tscn")
 @onready var waiting_queue:WaitingQueue = $WaitingQueue
+@onready var exit_node:Node2D = $Exit
 
 func _ready():
 	waiting_queue.dequeued.connect(_on_attendee_ready_to_sit)
 
 func attendee_arrived() -> void :
 	var new_attendee:Attendee = attendee_scene.instantiate()
+	new_attendee.attendee_exited.connect(_on_attendee_exited)
 	new_attendee.position = waiting_queue.entrance_node.position
 	waiting_queue.start_enqueue(new_attendee)
 	
@@ -33,6 +35,14 @@ func _on_attendee_ready_to_sit(attendee:Attendee) -> void:
 	else:
 		push_error("Can't seat with no available seat")
 
+func _on_attendee_exited(attendee:Attendee):
+	for table in tables:
+		if table.attendee_leaving(attendee):
+			print(str(attendee) + " just left")
+			attendee.queue_free()
+			return
+	push_error("Attendee exited that wasn't seated: " + str(attendee))
+
 func _find_open_seat() -> Array[int]:
 	for idx in range(len(tables)):
 		if tables[idx] != null:
@@ -48,6 +58,13 @@ func try_to_seat_from_queue() -> bool:
 	else:
 		return false
 	
+func find_all_seated_attendees() -> Array[Attendee]:
+	var all_seated: Array[Attendee] = []
+	for table in tables:
+		if table != null:
+			all_seated.append_array(table.find_all_attendees_seated())
+	return all_seated
+		
 	
 func attendee_waiting_count() -> int:
 	return waiting_queue.get_attendee_count()

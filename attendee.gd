@@ -1,5 +1,7 @@
 class_name Attendee extends Node2D
 
+signal attendee_exited(attendee:Attendee)
+
 static var NEXT_ID=1
 
 @onready var color_node:Sprite2D = $Color
@@ -24,6 +26,9 @@ func _ready() -> void:
 				color_node.modulate = Color(1, 0, 0, -happiness/100.0)
 		else:
 			push_error("invalid value for happiness:"+str(new_value))
+
+func leave(exit_location:Vector2):
+	walk_to(to_local(exit_location), func on_exit(): attendee_exited.emit(self))
 
 func walk_to(new_pos:Vector2, callback=null):
 	# compute distance to find speed of movement

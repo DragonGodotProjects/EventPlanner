@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://mdst1nonyo8f"]
 
-[ext_resource type="Script" uid="uid://62uqnk2gse15" path="res://test/seat_demo.gd" id="1_213tm"]
+[ext_resource type="Script" path="res://test/seat_demo.gd" id="1_213tm"]
 [ext_resource type="PackedScene" uid="uid://co2unnpwbyb56" path="res://seat.tscn" id="2_2qeko"]
 
 [node name="SeatDemo" type="Node2D" unique_id=881003875]
