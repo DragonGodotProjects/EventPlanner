@@ -7,6 +7,10 @@ func _input(event:InputEvent):
 		attendee.happiness += 10
 	elif event.is_action_pressed("ui_down"):
 		attendee.happiness -= 10
+	elif event.is_action_pressed("ui_left"):
+		attendee.start_happiness_timer(10, 1)
+	elif event.is_action_pressed("ui_right"):
+		attendee.clear_happiness_timer()
 	elif event is InputEventMouseButton:
 		var mouse_event := event as InputEventMouseButton
 		if mouse_event.is_released():

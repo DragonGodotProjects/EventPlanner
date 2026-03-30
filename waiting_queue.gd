@@ -54,3 +54,6 @@ func _move_everyone_up_from_index(currIdx:int, next_pos:Vector2i):
 	
 func get_attendee_count():
 	return len(attendees)
+	
+func all_attendees():
+	return (attendees.duplicate())

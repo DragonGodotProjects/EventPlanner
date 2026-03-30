@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://baidt7b74ihy2"]
+
+[ext_resource type="PackedScene" uid="uid://74y5b06xq5vf" path="res://event.tscn" id="1_1ea4a"]
+
+[node name="EventController" type="Node2D" unique_id=1316033310]
+
+[node name="Event" parent="." unique_id=218690963 instance=ExtResource("1_1ea4a")]

@@ -65,7 +65,21 @@ func find_all_seated_attendees() -> Array[Attendee]:
 			all_seated.append_array(table.find_all_attendees_seated())
 	return all_seated
 		
+func avg_happiness():
+	var total_happiness:float = 0
+	var attendees:Array[Attendee] = collect_all_attendees_present()
+	if len(attendees) > 0: 
+		for attendee in attendees:
+			total_happiness += attendee.happiness
+		return total_happiness/len(attendees)
+	else:
+		return 0
 	
+func collect_all_attendees_present():
+	var all:Array[Attendee] = find_all_seated_attendees()
+	all.append_array(waiting_queue.all_attendees())
+	return all
+
 func attendee_waiting_count() -> int:
 	return waiting_queue.get_attendee_count()
 	
